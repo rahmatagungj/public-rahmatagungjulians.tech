@@ -1,0 +1,9 @@
+{
+  "origins": [
+    "https://rahmatagungjulians.tech",
+    "https://www.rahmatagungjulians.tech"
+  ],
+  "originsRegex": [
+    "http:\/\/localhost:[0-9]+"
+  ]
+}
