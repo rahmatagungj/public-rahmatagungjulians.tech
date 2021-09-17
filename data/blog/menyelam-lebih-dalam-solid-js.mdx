@@ -1,0 +1,143 @@
+---
+title: Menyelam Lebih Dalam Solid JS
+date: '2021-08-19'
+tags: ['review']
+member: false
+draft: false
+summary: Mari menyelam lebih dalam Solis JS yang menjadi pustaka JavaScript deklaratif, efisien, dan fleksibel untuk membangun antarmuka pengguna.
+---
+
+Wuidih, ada yang baru nih 😁. Bulan agustus ini programmer mendapat informasi baru mengenai Solid JS, yang sebenarnya
+Solid JS ini sudah lama sekali dirilis.
+
+[Solid JS](https://www.solidjs.com/) pertama kali dirilis pada `07 Januari 2020`, SolidJS adalah perpustakaan UI deklaratif yang digunakan untuk membangun aplikasi web, seperti React, Angular, atau Vue. Dibangun menggunakan reaktivitas yang sangat efisien (Tanpa DOM Virtual), model komponen singkat, dan sudah mendukung TypeScript dan JSX.
+
+## Performa
+
+Solid JS berjalan dengan konsisten yaitu berada pada titik cepat UI dan penggunaan memorinya yang efisien. Berdasarkan tes menggunakan [JS Framework Benchmark](https://github.com/krausest/js-framework-benchmark) Solid JS memiliki performa yang sangat baik diantara framework lainnya.
+
+Untuk hasil tes terbaru berdasarkan JS Framework Benchmark dapat dilihat pada [hasil pengetesan secara umum](https://krausest.github.io/js-framework-benchmark/current.html). Yap, Solid JS jauh lebih baik daripada Svelte, Vue JS, Angular JS dan React JS.
+Bahkan jika dilihat dari [hasil tes berdasarkan komponennya](https://webcomponents.dev/blog/all-the-ways-to-make-a-web-component/), Solid JS juga masih menang.
+
+## Paket yang Paling Kecil
+
+Payload JS awalnya adalah 11.1kb (tanpa meninggalkan apapun menggunakan Context API dan Suspense) dibandingkan dengan Svelte yang lebih besar 33% yaitu 14.8kb.
+
+## Ekspresif
+
+Solid JS sudah mendukung 2 bahasa yang populer saat ini yaitu JavaScript dan TypeScript dan sudah mendukung format JSX sehingga lebih mudah untuk membangun aplikasi web. Proses Render Solid JS dibangun di atas primitif reaktif yang sama yang digunakan pengguna akhir dalam aplikasi.
+
+Reaktif Solid mengelola siklus hidupnya sendiri di luar sistem render, artinya komponen dapat disusun berdasarkan yang paling tinggi dan dapat menyimpan beberapa penyimpanan yang konsisten dalam lingkup lokal atau global.
+
+## Sudah Lengkap
+
+Solid JS lebih suka disebut sebagai `Library` dibandingkan dengan `Framework` sehingga tidak dapat disejajarkan dengan Angular JS yang sudah sangat lengkap. Namun, Solid JS juga sudah memberikan dukungan untuk beberapa fungsi yang kita butuhkan, seperti:
+
+    - Fragments
+    - Portals
+    - Context
+    - Suspense
+    - Error Boundaries
+    - Lazy Components
+    - Async
+    - Concurrent Rendering
+    - Implicit Event Delegation
+    - Server Side Rendering
+    - Hydration (walaupun belum setara dengan Next.js)
+
+Preact dan Inferno membutuhkan proses lebih lama dikarenakan membutuhkan proses perubahan yang sangat banyak pada Virtual DOM.
+
+## Easy to Use
+
+Sudah pernah menggunakan React JS? ini adalah sikembar atau yang saya sebut 11 - 12 😂.
+Solid JS memiliki pola umum yang sama dengan React JS, contohnya:
+
+Script Counter menggunakan React JS
+
+```js:counter.js
+import React,{useState, useEffect} from 'react';
+
+const CounterComponent = () => {
+  const [count, setCount] = useState(0),
+
+  useEffect((
+      const timer = setInterval(() => setCount(c => c + 1), 1000)
+      return(() => clearInterval(timer));
+  ),[]);
+
+  return <div>{count()}</div>;
+};
+```
+
+Script Counter menggunakan Solid JS
+
+```js:counter.js
+import { createSignal, onCleanup } from "solid-js";
+
+const CounterComponent = () => {
+  const [count, setCount] = createSignal(0),
+    timer = setInterval(() => setCount(c => c + 1), 1000);
+  onCleanup(() => clearInterval(timer));
+
+  return <div>{count()}</div>;
+};
+```
+
+Contoh lebih lengkap :
+
+<div className="flex flex-col md:flex-row items-center justify-center w-full">
+  <a
+    href="https://github.com/rahmatagungj/simple-counter"
+    rel="noopener nofollow noreferrer"
+    title="simple counter"
+    alt="simple counter"
+    target="_blank"
+    className="plain-link mb-4 md:mb-0 ml-1 mr-1 w-full"
+  >
+        <Pressable basic={true} color="indigo">
+      Versi React JS
+    </Pressable>
+  </a>
+  <a
+    href="https://github.com/rahmatagungj/solid-multi-counter"
+    rel="noopener nofollow noreferrer"
+    title="solid multi counter"
+    alt="solid multi counter"
+    target="_blank"
+    className="plain-link mb-4 md:mb-0 ml-1 mr-1 w-full"
+  >
+    <Pressable basic={true} color="red">
+      Versi Solid JS
+    </Pressable>
+  </a>
+  <a
+    href="https://github.com/rahmatagungj/nextjs-counter"
+    rel="noopener nofollow noreferrer"
+    title="next counter"
+    alt="next multi counter"
+    target="_blank"
+    className="plain-link mb-4 md:mb-0 ml-1 mr-1 w-full"
+  >
+        <Pressable basic={true} color="yellow">
+
+      Versi Next JS
+    </Pressable>
+
+  </a>
+</div>
+
+Bagaimana? sudah melihat perbedaanya?
+
+Solid JS paling sederhana dibandingkan keduanya, namun belum tentu bagus untuk semua aplikasi yang akan kita buat.
+
+## Kesimpulan
+
+Ringan dan Cepat itu yang kita cari, Solid JS sudah cukup memberikan fungsi penting untuk kita gunakan saat membuat aplikasi web.
+
+Menurut saya Solid JS sudah cukup untuk aplikasi sekala kecil (_untuk saat ini_), ini dikarenakan masih sedikitnya fungsi dan pustaka tambahan yang mendukung Solid JS tetapi mungkin nanti akan ada pembaruan yang akan melengkapi Solid JS sehingga dapat digunakan untuk aplikasi yang lebih besar.
+
+Tautan Penting:
+
+    - [Solid JS](https://www.solidjs.com/)
+    - [Solid JS Github](https://github.com/solidjs/solid)
+    - [Solid JS Discord](https://discord.com/invite/solidjs)

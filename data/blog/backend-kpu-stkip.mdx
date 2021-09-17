@@ -1,0 +1,135 @@
+---
+title: Backend - Situs KPU Mahasiswa STKIP Muhammadiyah Kuningan
+date: '2021-08-06'
+tags: ['breakdown']
+member: true
+draft: false
+summary: Pada bulan ini yaitu Agustus 2021 akan ada pemilihan Presiden dan Wakil Presiden Badan Eksekutif Mahasiswa STKIP Muhammadiyah Kuningan 2021-2022. Dengan adanya pemilihan tersebut maka dibuatlah situs khusus untuk melakukan pemilihan dari mahasiswa secara online, disini saya akan membawa anda untuk melihat beberapa konsep dan alur kerja dari situs yang saya buat.
+---
+
+Pada bulan ini yaitu Agustus 2021 akan ada pemilihan Presiden dan Wakil Presiden Badan Eksekutif Mahasiswa STKIP Muhammadiyah Kuningan 2021-2022.
+Dengan adanya pemilihan tersebut maka dibuatlah situs khusus untuk melakukan pemilihan dari mahasiswa secara online, disini saya akan membawa anda untuk melihat beberapa konsep dan alur kerja dari situs yang saya buat.
+
+> OH, WOW!
+
+Ini akan menjadi hal baru untuk saya merancang arsitektur aplikasi dengan performa cepat, kebutuhan dari aplikasi juga meharuskan saya memikirkan lagi apa yang harus saya gunakan untuk aplikasi ini.
+
+# Expectation vs Reality
+
+Harapan dan tujuan aplikasi :
+
+1. Setiap mahasiswa dapat memilih satu calon
+2. Hasil voting dapat ditampilkan dalam quickcount
+
+Yang sebenarnya terjadi :
+
+1. Setiap mahasiswa akan mengirim data dan mengambil data paling sedikit 5 data/detik
+
+Jumlah mahasiswa yang akan mengikuti pemilihan sebanyak 1,295 dan itu artinya jika 10% mahasiswa membuka situs ini dalam 1 waktu yang sama maka :
+
+```
+1,295 / 10 = 130
+130 x 5 = 650 data/detik
+```
+
+Iya, itu akan membuat server langsung crash dan tidak dapat menerima proses data selanjutnya. Ini merupakan permasalahan yang tidak diinginkan.
+
+Mari kita lanjutkan ...
+
+# Implementation
+
+## Basic
+
+Dari pihak kampus sudah disediakan hosting dan REST API yang bisa saya gunakan untuk mengakses akun mahasiswa dan total mahasiswa yang ada dikampus, namun tidak disediakan hosting khusus untuk REST API penyimpanan data voting.
+
+And then?
+
+Akhirnya saya memutuskan untuk menggunakan layanan dari Microsoft Azure sebagai server REST API data voting dan jadilah seperti ini konsepnya.
+
+Teringat bahwa aplikasi ini harus berjalan dalam kecepatan tinggi artinya saya tidak dapat menggunakan database yang memiliki query lambat, saya mencoba untuk mencari referensi mengenai database yang cepat dan ringan.
+Terdapat 2 pilihan, yaitu :
+
+1. Firebase
+2. Mongo DB
+
+Hmm, Firebase itu mahal dan pasti akan membutuhkan budget yang sangat besar agar semua proses data dapat diterima dengan baik, jadi saya gunakan Mongo DB sebagai penyimanan data voting.
+Sampai disini hosting dan REST API kampus sudah selesai, mari lebih dalam pada arsitektur REST API data voting.
+
+## NoSQL is My Way
+
+MongoDB adalah sistem basis data berorentasi dokumen lintas platform. Diklasifikasikan sebagai basis data "NoSQL", MongoDB menghindari struktur basis data relasional tabel berbasis tradisional yang mendukung JSON seperti dokumen dengan skema dinamis (MongoDB menyebutnya sebagai format BSON), membuat integrasi data dalam beberapa jenis aplikasi lebih mudah dan lebih cepat. _(sumber: wikipedia)_
+
+Dengan adanya MongoDB ini membuat semua urusan database menjadi lebih aman dan semakin membuat saya yakin akan kecepatan proses datanya.
+
+BTW, MongoDB juga memiliki sistem sharding yang memungkinkan untuk membagikan data dengan kunci khusus dan mendistribusikannya melalui satu atau lebih database.
+Setelah semuanya siap baik dari REST API dan Database maka waktunya saya untuk melihat bagaimana performa sistem ini dengan melakukan tes beberapa user secara langsung,
+
+### First Test
+
+Percobaan pertama yaitu pengguna melakukan tes dengan vote di situs KPU secara bersamaan.
+Yap, masih sangat cepat untuk merespon setiap permintaan data dari pengguna.
+
+> Berarti sudah selesai?
+
+Oh tidak, ini masih banyak yang harus dikerjakan. Coba kita lihat digambar hasil pengetesan tadi, ada yang salah disana, jika yang melakukan tes ada `11 orang kenapa ada 92 request`?
+
+Ini baru 11 orang artinya tidak sampai 10% dari total mahasiswa yanga akan melakukan voting nanti, hal ini terjadi dikarenakan setiap mahasiswa tidak hanya mengirim data tetapi juga meminta data untuk Hasil voting sementara dan informasi voting mahasiswa itu sendiri.
+
+### Solution
+
+Pada 3 data tersebut ada yang akan menjadi data statis yaitu hasil vote dan informasi voting mahasiswa, disini saya akan mencoba melakukan Caching pada sistem REST API voting tersebut.
+
+Caching adalah penyimpanan sementara data di server. Cache membantu menampilkan data dengan lebih cepat saat pengunjung membutuhkannya.
+
+#### Redis
+
+Cara terbaik untuk melakukan caching bagi saya yaitu dengan menggunakan Redis, selain cepat dan mudah untuk digunakan, Redis juga bisa menyimpan data yang lebih luas seperti data yang akan dikirimkan ke server.
+
+Dengan adanya Redis ini akan mempercepat proses data yang akan dikirimkan ke server dan juga mempercepat proses pengambilan data yang akan diterima dari server.
+Tidak sampai sini, ada lagi masalah yang harus dikerjakan.
+
+Permasalahan Redis:
+
+1. Redis harus dijalankan diserver juga sehingga harus membuat server dedicated sendiri.
+2. Redis mengharuskan berjalan pada lingkungan dengan spesifikasi hardware tinggi.
+3. Biaya yang mahal untuk menjalankan Redis.
+
+Tidak akan memungkinkan saya untuk membuat server Redis ini sendiri, kendala waktu dan budget juga akan membuat aplikasi ini semakin rumit.
+
+In the end, saya menggunakan layanan dari Microsoft Azure untuk menjalankan Redis.
+
+#### Microsoft Azure Cache for Redis
+
+Azure Cache for Redis menyediakan penyimpanan data dalam memori berdasarkan perangkat lunak Redis. Redis meningkatkan performa dan skalabilitas aplikasi yang menggunakan penyimpanan data backend dengan berat. Ini dapat memproses permintaan aplikasi dalam volume besar dengan menyimpan data yang sering diakses dalam memori server, yang dapat ditulis dan dibaca dengan cepat. Redis menghadirkan solusi penyimpanan data latensi rendah dan throughput tinggi yang penting untuk aplikasi modern.
+_(sumber: microsoft)_
+
+Selain itu, dengan adanya Microsoft Azure Cache for Redis ini membuat saya lebih hemat biaya untuk menjalankan Redis di Azure.
+Pola kodenya seperti ini:
+
+```js:voteController.js
+exports.index = async (req, res) => {
+  const cachedVotes = await client.get("votes");
+
+  if (cachedVotes) {
+    const cache = JSON.parse(cachedVotes);
+    res.json({
+      // all data from cache
+      data: JSON.parse(cache.data),
+    });
+  } else {
+    // fetch data from database
+  }
+}
+```
+
+Wuhuuuu, ini semuanya sudah selesai.
+
+## Result
+
+Setelah semuanya siap, saya kembali melihat bagaimana performa dan proses data yang ada pada server, ternyata `Aman dan Cepat`.
+
+Layanan yang digunakan:
+
+1. **Microsoft Azure Web Service**
+2. **Microsoft Azure Cache for Redis**
+3. **Mongo Database**

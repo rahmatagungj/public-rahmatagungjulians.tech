@@ -1,0 +1,113 @@
+---
+title: Kerangka HTML
+draft: false
+summary: Quickstart salin-tempel untuk membuat proyek HTML statis baru.
+date: '2021-08-20'
+---
+
+Ini dimaksudkan sebagai quickstart salin-tempel untuk membuat proyek HTML statis baru. Ini berisi semua yang Anda butuhkan untuk membuat halaman menggunakan teknologi web vanilla, dan mencakup semua praktik terbaik zaman modern untuk berbagi media sosial.
+
+```html:index.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Judul</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="Your name">
+  <meta name="description" content="Brief description">
+  <meta property="og:title" content="Your Page Title">
+  <meta property="og:description" content="Brief description">
+  <meta property="og:image" content="/some-image.png">
+  <meta property="og:url" content="/this-page.html">
+  <meta property="og:site_name" content="Your Site Name">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image:alt" content="image description">
+  <link href="style.css" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+</head>
+<body>
+  <h1>Konten disini</h1>
+  <script src="script.js"></script>
+</body>
+</html>
+```
+
+## Penjelasan
+
+Berikut cuplikan yang sama, dengan komentar sebaris yang menawarkan informasi tambahan:
+
+```html:index.html
+<!--
+  Di masa lalu, DOCTYPE diperlukan untuk menentukan versi HTML.
+  Pada HTML5, menyediakan `html` sudah cukup.
+  Itu adalah suatu tempat antara tag HTML yang tepat, dan komentar HTML. -->
+
+<!DOCTYPE html>
+<!-- Tambahkan bahasa yang sesuai untuk situs Anda -->
+<html lang="en">
+<head>
+<!--
+    UTF-8 adalah kumpulan karakter yang mencakup banyak karakter universal.
+    Ini adalah tag penting untuk semua situs web, agar tidak terlihat
+    kotak aneh seperti
+  -->
+<meta charset="utf-8">
+
+ <!--
+    Tag penting ini memastikan bahwa item pada skala layar
+    dengan benar di perangkat seluler. Tanpa tag ini, konten mungkin
+    tampak SANGAT kecil.
+ -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+ <!--
+    Tetapkan nama Anda dan deskripsi singkat.
+    Digunakan oleh mesin pencari.
+   -->
+<meta name="author" content="nama penulis">
+<meta name="description" content="deskripsi situs">
+  <!--
+    `og` adalah singkatan dari Open Graph, yang merupakan protokol untuk bagaimana Anda
+    situs web muncul ketika ditautkan ke dari situs lain. Tag ini
+    sangat penting untuk memastikan situs Anda mendapatkan kartu yang sesuai
+    saat berbagi di media sosial.
+ -->
+<meta property="og:title" content="judul situs">
+<meta property="og:description" content="deskripsi situs">
+<meta property="og:image" content="/gambar.png">
+<meta property="og:url" content="/halaman.html">
+<meta property="og:site_name" content="nama situs">
+  <!--
+    `twitter` mirip dengan Open Graph, tetapi khusus untuk Twitter.
+    Ada beberapa jenis kartu yang dapat Anda pilih.
+    Pelajari lebih lanjut tentang dokumentasi Twitter:
+    https://developer.twitter.com/en/docs/tweets/optimize-with-cards/guides/getting-started
+ -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image:alt" content="deskripsi gambar">
+
+ <!-- Sertakan satu atau lebih file CSS -->
+<link href="style.css" rel="stylesheet">
+ <!--
+    Favicon adalah gambar kecil yang muncul di browser
+    tab. Secara historis, ini menggunakan format ".ico" berpemilik, dan
+    Anda perlu menyediakan banyak ukuran berbeda.
+    Untungnya, Anda sekarang dapat menyediakan grafik vektor tunggal di SVG
+    format. Ini akan menskala ke ukuran apa pun, dan masih terlihat tajam.
+ -->
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<!-- Judul ini muncul di tab halaman, di sebelah favicon -->
+<title>Your Page Title</title>
+
+</head>
+<body>
+  <h1>Konten disini</h1>
+
+  <!-- Jika perlu, sertakan JS -->
+  <script src="script.js"></script>
+</body>
+</html>
+
+```
+
+Jika saat ini Anda bekerja atau berencana untuk bekerja dengan React, Anda mungkin ingin menggunakan tag self-closing, contohnya `<meta />` hingga `<meta>`. Meskipun tidak sepenuhnya diperlukan dalam HTML, mereka menjadi penting di BEJ, dan ini adalah kebiasaan yang berguna untuk dikembangkan.

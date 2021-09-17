@@ -1,0 +1,87 @@
+---
+title: Frontend - Situs KPU Mahasiswa STKIP Muhammadiyah Kuningan
+date: '2021-08-07'
+tags: ['breakdown']
+draft: false
+member: false
+summary: Apa yang harus dipakai? Javascript atau Python, disini saya akan membahas mengenai pembuatan frontend untuk situs KPU Mahasiswa STKIP Muhammadiyah Kuningan.
+---
+
+> Jump into modern website
+
+2021 ini sudah banyak sekali situs yang menggunakan teknologi website yang baru, salah satunya situs pemerintah yaitu situs [Prakerja.go.id](https://dashboard.prakerja.go.id/) yang menjadi motivasi bagi saya dalam merancang situs KPU Mahasiswa STKIP Muhammadiyah Kuningan.
+
+## Frontend
+
+Banyak sekali framework frontend yang ada di internet, seperti [React](https://facebook.github.io/react/), [Vue](https://vuejs.org/), [Angular](https://angular.io/), [Polymer](https://www.polymer-project.org/), [Django](https://www.djangoproject.com/), [Ember](https://emberjs.com/).
+
+Django itu menyenangkan untuk saya membuat website namun melihat dengan keadaan server yang tidak dapat menjalankan Python akhirnya disini saya memilih [React](https://reactjs.org/) sebagai pustaka utama dari pembuatan UI situs ini.
+
+### React Javascript
+
+React adalah pustaka JavaScript front-end sumber terbuka dan gratis untuk membangun antarmuka pengguna atau komponen UI. Itu dikelola oleh Facebook dan komunitas pengembang individu dan perusahaan. React dapat digunakan sebagai basis dalam pengembangan aplikasi satu halaman atau mobile. _(sumber: wikipedia)_
+
+#### Kenapa memilih React?
+
+- **Open Source**: React itu open source, yaitu bisa diunduh dan diubah menjadi bahasa pemrograman lainnya.
+- **Gratis**: React itu gratis, yaitu tidak memerlukan biaya apapun untuk menggunakannya.
+- **Deklaratif**: React mudah untuk membuat UI interaktif. Rancang tampilan sederhana untuk setiap status dalam aplikasi dan React akan secara efisien memperbarui dan merender komponen yang tepat saat Data berubah.
+
+Seperti air kopi bahwa jika ada manis pasti ada pahit, React JS ini tidak memiliki fungsi-fungsi yang menjadi dasar aplikasi, seperti: Routing dan UI Component.
+
+Jadi untuk React JS ini mau tidak mau harus melakukan bloating dengan menambahkan beberapa fungsi-fungsi yang diperlukan.
+
+#### UI Component
+
+> Bootstrap, Foundation, Materialize, Semantic UI, Ant Design, dll.
+> Mau pake yang mana?
+
+Hmm Bootstrap itu sudah saya pakai sebelumnya dan sudah banyak situs yang menggunakan framework ini.
+Disini saya mencari referensi mengenai TailwindCSS yang merupakan framework yang memiliki fitur yang sama dengan Bootstrap namun tidak berat dan mendukung React JS.
+
+TailwindCSS ini merupakan `utility-first CSS framework` sehingga menggunakan `utility` untuk membuat UI yang lebih ringan dan ketika script digunakan dalam environment production maka akan menghasilkan file CSS yang lebih ringan dikarenakan adanya Purge CSS.
+
+#### Routing
+
+Tujuan saya menggunakan React JS ini yaitu untuk membuat aplikasi yang bisa diakses dari berbagai lokasi dan tampilan yang bisa diubah secara dinamis.
+React JS juga memungkinkan kita untuk melakukan navigasi tanpa perlu mereload halaman website sehingga performa aplikasi tetap cepat.
+
+Agar website dapat berjalan tanpa adanya reload browser, hal ini dapat dilakukan dengan menggunakan [react-router](https://reacttraining.com/react-router/).
+
+Dengan menggunakan React Router Dom juga memudahkan saya dalam mengimplementasikan SEO sederhana seperti Title Tag dan Meta Tag agar menjadi lebih dinamis.
+Ooops, disini saya perlu menyiapkan Private Route untuk halaman voting dan admin sehingga publik tidak dapat mengakses halaman tersebut.
+
+Berikut ini gambaran Routing situs:
+
+```js:app.js
+function App() {
+
+  return (
+      <Router>
+        <Switch>
+          <Route path="/" component={Home} exact />
+          <PrivateRoute path="/dashboard" component={Dashboard} exact />
+          <PrivateRoute path="/admin/dashboard" component={Dashboard} exact />
+        </Switch>
+      </Router>
+  );
+}
+```
+
+Mari kita lanjutkan ...
+
+#### State Management
+
+> Sekarang apa? Rexus atau Recoil?
+
+Nooooo, state disini tidak terlalu banyak dikonsumsi oleh client sehingga disini saya hanya menggunakan React Context saja untuk mengatur state.
+
+Sederhana tidak perlu menambahkan pustaka baru lagi, karena React Context sudah didukung oleh React JS.
+
+## Addons
+
+Ada beberapa pustaka kecil yang saya tambahkan untuk melengkapi aplikasi yang saya buat. seperti:
+
+- [Animate CSS](https://animate.style/) untuk membuat animasi CSS.
+- [React Reveal](https://www.react-reveal.com/) untuk membuat animasi reveal.
+- [Daisy UI](https://daisyui.github.io/) untuk membuat UI kecil yang lebih modern.

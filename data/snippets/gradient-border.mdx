@@ -1,0 +1,23 @@
+---
+title: Gradient Border
+draft: false
+summary: Membuat gradient border dengan CSS.
+date: '2021-08-20'
+---
+
+Membuat gradient border dengan CSS.
+
+```css:card.css
+.card {
+  display: block;
+  width: 200px;
+  height: 200px;
+  padding: 1px;
+  background-clip: content-box, border-box;
+  background-image: linear-gradient(black, black), linear-gradient(to right, gray, gray);
+}
+
+.card:hover {
+  background-image: linear-gradient(black, black), linear-gradient(to right, red, red);
+}
+```
