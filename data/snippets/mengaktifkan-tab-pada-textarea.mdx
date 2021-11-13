@@ -7,7 +7,7 @@ date: '2021-09-12'
 
 Ini dimaksudkan untuk mengaktifkan tab pada textarea.
 
-```js:enableTab.js
+```js:enableTab.js showLineNumbers
 function enableTab(el) {
   el.onkeydown = function (e) {
     if (e.keyCode === 9) {
@@ -26,7 +26,7 @@ function enableTab(el) {
 
 Berikut cuplikan yang sama, dengan komentar sebaris yang menawarkan informasi tambahan:
 
-```js:enableTab.js
+```js:enableTab.js showLineNumbers
 function enableTab(el) {
   el.onkeydown = function (e) {
     if (e.keyCode === 9) {
@@ -52,7 +52,7 @@ function enableTab(el) {
 
 ## Pengunaan
 
-```js:index.js
+```js:index.js showLineNumbers {2}
 const textarea = document.querySelector('textarea')
 enableTab(textarea)
 ```
