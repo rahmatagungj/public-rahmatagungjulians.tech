@@ -1,0 +1,63 @@
+---
+title: Mengatur Ulang CSS
+draft: false
+summary: Mempercepat untuk mengatur ulang gaya CSS pada proyek baru.
+date: '2021-11-26'
+---
+
+Setiap kali saya memulai proyek baru, tahap pertama yaitu mengatur ulang beberapa sisi kasar dalam CSS. 
+
+```css:style.css showLineNumbers
+/*
+  1. Gunakan model ukuran kotak yang lebih intuitif.
+*/
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+/*
+  2. Hapus margin default
+*/
+* {
+  margin: 0;
+}
+/*
+  3. Izinkan ketinggian berbasis persentase dalam aplikasi
+*/
+html, body {
+  height: 100%;
+}
+/*
+  Penyesuaian tipografi!
+  4. Tambahkan ketinggian garis yang dapat diakses
+  5. Tingkatkan rendering teks
+*/
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+/*
+  6. Tingkatkan default media
+*/
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+}
+/*
+  7. Hapus gaya tipografi formulir bawaan
+*/
+input, button, textarea, select {
+  font: inherit;
+}
+/*
+  8. Hindari teks yang meluap
+*/
+p, h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;
+}
+/*
+  9. Buat konteks root stacking
+*/
+#root, #__next {
+  isolation: isolate;
+}
+```
