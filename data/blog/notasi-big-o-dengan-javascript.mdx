@@ -1,0 +1,424 @@
+---
+title: Memahami Notasi Big O dengan Javascript
+date: '2022-10-08'
+tags: ['JAVASCRIPT']
+draft: false
+member: false
+summary: Kompleksitas Waktu dan Ruang menggunakan Javascript, dilengkapi contoh.
+progress: 100
+---
+
+<TOCInline toc={props.toc} />
+
+Algoritma adalah seperangkat instruksi yang terdefinisi dengan baik untuk memecahkan masalah tertentu. Anda dapat memecahkan masalah ini dengan berbagai cara.
+Ini berarti bahwa metode yang Anda gunakan untuk sampai pada solusi yang sama mungkin berbeda dari saya, tetapi kita berdua harus mendapatkan hasil yang sama.
+
+Ini penting bagi programmer untuk memastikan bahwa aplikasi mereka berjalan dengan benar dan untuk membantu mereka menulis kode yang bersih.
+Di sinilah peranan Notasi Big O diperlukan.
+
+### Apa itu Big O?
+
+Notasi Big O adalah metrik untuk menentukan efisiensi suatu algoritma. Ini memungkinkan Anda untuk memperkirakan berapa lama kode Anda akan berjalan pada set input yang berbeda dan mengukur seberapa efektif skala kode Anda saat ukuran input Anda meningkat.
+
+Bio O mewakili kompleksitas kasus terburuk suatu algoritma. Ini menggunakan istilah aljabar untuk menggambarkan kompleksitas suatu algoritma.
+Big O menentukan waktu proses yang diperlukan untuk menjalankan algoritma dengan mengidentifikasi bagaimana kinerja algoritma Anda akan berubah seiring bertambahnya ukuran input.
+
+Notasi Big O mengukur efisiensi dan kinerja algoritma Anda menggunakan kompleksitas ruang dan waktu.
+
+### Apa itu Kompleksitas Ruang dan Waktu?
+
+<div className="flex text-center items-center">
+  <div className="mx-auto">
+    <Image
+      src="/static/images/article/big-o.png"
+      width="800"
+      height="400"
+      alt="Komplesitas Big O"
+    />
+  </div>
+</div>
+
+Salah satu faktor utama yang mempengaruhi kinerja dan efisiensi program adalah perangkat keras, OS, dan CPU yang Anda gunakan.
+
+Kompleksitas waktu algoritma menentukan berapa lama waktu yang diperlukan untuk mengeksekusi algoritma **sebagai fungsi dari ukuran inputnya**.
+Demikian pula, kompleksitas ruang algoritma menentukan jumlah total ruang atau memori yang diperlukan untuk menjalankan algoritma **sebagai fungsi dari ukuran inputnya**.
+
+### Jenis Kompleksitas
+
+Di Big O, ada 6 jenis kompleksitas utama (waktu dan ruang):
+
+<ul>
+  <li>
+    Konstan (O (1)) - <span className="bg-blue-500 rounded px-2 py-1 text-white">Bagus</span>
+  </li>
+  <li>
+    Logaritmik (O (log n)) -{' '}
+    <span className="bg-green-600 rounded px-2 py-1 text-white">Bagus</span>
+  </li>
+  <li>
+    Linear (O (n)) - <span className="bg-trueGray-500 rounded px-2 py-1 text-white">Biasa</span>
+  </li>
+  <li>
+    Linear Logaritmik (O (n log n)) -
+    <span className="bg-trueGray-600 rounded px-2 py-1 text-white">Biasa</span>
+  </li>
+  <li>
+    Kuadratik (O (n ^ 2)) -{' '}
+    <span className="bg-yellow-600 rounded px-2 py-1 text-white">Buruk</span>
+  </li>
+  <li>
+    Buruk * Ekspotensial (O (2 ^ n)) -{' '}
+    <span className="bg-red-600 rounded px-2 py-1 text-white">Buruk</span>
+  </li>
+</ul>
+Selalu hindari kompleksitas waktu yang buruk dan terburuk.
+
+##### Mengetahui Algoritma yang Memiliki Kompleksitas Waktu
+
+- Bila perhitungan Anda tidak bergantung pada ukuran input, ini adalah kompleksitas waktu yang konstan (O(1)).
+- Ketika ukuran input dikurangi setengahnya, mungkin saat iterasi, menangani rekursi, atau apa pun, itu adalah kompleksitas waktu logaritmik (O(log n)).
+- Ketika perhitungan Anda bergantung pada ukuran input, itu adalah kompleksitas waktu linear (O(n)).
+- Ketika perhitungan Anda bergantung pada ukuran input dan perhitungan itu sendiri bergantung pada ukuran input, itu adalah kompleksitas waktu kuadratik (O(n^2)).
+- Ketika perhitungan Anda bergantung pada ukuran input dan perhitungan itu sendiri bergantung pada ukuran input dan perhitungan itu sendiri bergantung pada ukuran input, itu adalah kompleksitas waktu eksponensial (O(2^n)).
+
+### Contoh
+
+#### Konstan (O (1))
+
+Ketika algoritma Anda tidak bergantung pada ukuran input n, dikatakan memiliki kompleksitas waktu yang konstan dengan orde O(1). Ini berarti bahwa waktu berjalan akan selalu sama terlepas dari ukuran input.
+
+<InteractiveCode language="javascript" code={`function log(array) {
+  console.log(array[0])
+  console.log(array[1])
+}
+
+log([1, 2, 3, 4])
+log([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
+`} />
+
+Fungsi di atas hanya memerlukan satu langkah eksekusi, artinya fungsi tersebut berada dalam waktu konstan dengan kompleksitas waktu O(1).
+
+atau contoh lainnya
+
+```javascript
+const firstElement = (array) => {
+  for (let i = 0; i < array.length; i++) {
+    return array[0]
+  }
+}
+
+let score = [12, 55, 67, 94, 22]
+console.log(firstElement(score))
+```
+
+#### Logaritmik (O (log n))
+Ini mirip dengan kompleksitas waktu linier, kecuali bahwa runtime tidak bergantung pada ukuran input melainkan pada setengah ukuran input. Ketika ukuran input berkurang pada setiap iterasi atau langkah, suatu algoritma dikatakan memiliki kompleksitas waktu logaritmik.
+
+Metode ini adalah yang terbaik kedua karena program Anda berjalan untuk setengah ukuran input daripada ukuran penuh. Bagaimanapun, ukuran input berkurang dengan setiap iterasi.
+
+Contoh yang bagus adalah fungsi pencarian biner, yang membagi array yang diurutkan berdasarkan nilai target.
+
+Misalnya, Anda menggunakan algoritma pencarian biner untuk menemukan indeks elemen tertentu dalam array:
+
+<InteractiveCode language="javascript" code={`function binarySearch(array, key) {
+  let low = 0
+  let high = array.length - 1
+  let mid
+  let element
+
+  while (low <= high) {
+    mid = Math.floor((low + high) / 2, 10)
+    element = array[mid]
+    if (element < key) {
+      low = mid + 1
+    } else if (element > key) {
+      high = mid - 1
+    } else {
+      return mid
+    }
+  }
+  return -1
+}
+
+const result = binarySearch([1, 2, 3, 4, 5], 2)
+console.log(result)
+`} />
+
+atau contoh lainnya
+
+```javascript
+const binarySearch = (array, target) => {
+  let firstIndex = 0
+  let lastIndex = array.length - 1
+  while (firstIndex <= lastIndex) {
+    let middleIndex = Math.floor((firstIndex + lastIndex) / 2)
+
+    if (array[middleIndex] === target) {
+      return middleIndex
+    }
+
+    if (array[middleIndex] > target) {
+      lastIndex = middleIndex - 1
+    } else {
+      firstIndex = middleIndex + 1
+    }
+  }
+  return -1
+}
+
+let score = [12, 22, 45, 67, 96]
+console.log(binarySearch(score, 96))
+```
+
+#### Linear (O (n))
+
+Anda mendapatkan kompleksitas waktu linier ketika waktu berjalan dari suatu algoritma meningkat secara linier dengan ukuran input. Ini berarti bahwa ketika suatu fungsi memiliki iterasi yang berulang pada ukuran input n, dikatakan memiliki kompleksitas waktu orde O(n).
+
+Misalnya, jika suatu algoritma akan mengembalikan faktorial dari setiap angka yang dimasukkan. Ini berarti jika Anda memasukkan 5 maka Anda harus mengulang dan mengalikan 1 dengan 2 dengan 3 dengan 4 dan dengan 5 dan kemudian menghasilkan 120:
+
+<InteractiveCode language="javascript" code={`const calcFactorial = (n) => {
+  let factorial = 1;
+  for (let i = 2; i <= n; i++) {
+    factorial = factorial * i;
+  }
+  return factorial;
+};
+
+console.log(calcFactorial(5));
+`} />
+
+Fakta bahwa runtime bergantung pada ukuran input berarti bahwa kompleksitas waktu linier dengan orde O(n).
+
+atau contoh lainnya
+
+```javascript
+const linearSearch = (array, target) => {
+  for (let i = 0; i < array.length; i++) {
+    if (array[i] === target) {
+      return i
+    }
+  }
+  return -1
+}
+
+let score = [12, 22, 45, 67, 96]
+console.log(linearSearch(score, 96))
+```
+
+#### Linear Logaritmik (O (n log n))
+
+<InteractiveCode language="javascript" code={`function mergeSort(array) {
+  if (array.length < 2) {
+    return array
+  }
+
+  const length = array.length
+  const middle = Math.floor(length / 2)
+  const left = array.slice(0, middle)
+  const right = array.slice(middle, length)
+
+  return merge(mergeSort(left), mergeSort(right))
+}
+
+function merge(left, right) {
+  const result = []
+
+  while (left.length && right.length) {
+    if (left[0] <= right[0]) {
+      result.push(left.shift())
+    } else {
+      result.push(right.shift())
+    }
+  }
+
+  while (left.length) {
+    result.push(left.shift())
+  }
+
+  while (right.length) {
+    result.push(right.shift())
+  }
+
+  return result
+}
+
+const merged = mergeSort([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
+console.log(merged)
+`} />
+
+atau contoh lainnya
+
+```javascript
+const mergeSort = (array) => {
+  if (array.length < 2) {
+    return array
+  }
+
+  let middle = Math.floor(array.length / 2)
+  let left = array.slice(0, middle)
+  let right = array.slice(middle, array.length)
+
+  return merge(mergeSort(left), mergeSort(right))
+}
+
+const merge = (left, right) => {
+  let result = []
+
+  while (left.length && right.length) {
+    if (left[0] <= right[0]) {
+      result.push(left.shift())
+    } else {
+      result.push(right.shift())
+    }
+  }
+
+  while (left.length) {
+    result.push(left.shift())
+  }
+
+  while (right.length) {
+    result.push(right.shift())
+  }
+
+  return result
+}
+
+let score = [12, 22, 45, 67, 96]
+console.log(mergeSort(score))
+```
+
+#### Kuadratik (O (n^2))
+
+Saat Anda melakukan iterasi bersarang, artinya memiliki loop dalam satu lingkaran, kompleksitas waktu adalah kuadrat, yang mengerikan.
+
+Cara sempurna untuk menjelaskan ini adalah jika Anda memiliki array dengan n item. Loop luar akan berjalan n kali, dan loop dalam akan berjalan n kali untuk setiap iterasi dari loop luar, yang akan memberikan total n^2 cetakan. Jika array memiliki sepuluh item, sepuluh akan dicetak 100 kali (10^2).
+
+<InteractiveCode language="javascript" code={`function printAllNumbersThenAllPairSums(numbers) {
+  console.log('these are the numbers:')
+  numbers.forEach(function (number) {
+    console.log(number)
+  })
+
+  console.log('and these are their sums:')
+  numbers.forEach(function (firstNumber) {
+    numbers.forEach(function (secondNumber) {
+      console.log(firstNumber + secondNumber)
+    })
+  })
+}
+
+const toBePrint = printAllNumbersThenAllPairSums([1, 2, 3, 4, 5])
+console.log(toBePrint)
+`} />
+
+Pada contoh di atas terdapat nested loop, artinya kompleksitas waktu adalah kuadratik dengan orde O(n^2).
+
+atau contoh lainnya
+
+```javascript
+const printAllNumbersThenAllPairSums = (numbers) => {
+  console.log('these are the numbers:')
+  numbers.forEach((number) => {
+    console.log(number)
+  })
+
+  console.log('and these are their sums:')
+  numbers.forEach((firstNumber) => {
+    numbers.forEach((secondNumber) => {
+      console.log(firstNumber + secondNumber)
+    })
+  })
+}
+
+let score = [12, 22, 45, 67, 96]
+printAllNumbersThenAllPairSums(score)
+```
+
+#### Ekspotensial (O (2^n))
+
+Anda mendapatkan kompleksitas waktu eksponensial ketika tingkat pertumbuhan berlipat ganda dengan setiap penambahan input (n), sering kali berulang melalui semua himpunan bagian dari elemen input. Setiap kali unit input bertambah 1, jumlah operasi yang dieksekusi menjadi dua kali lipat.
+
+Deret Fibonacci rekursif adalah contoh yang bagus. Asumsikan Anda diberi nomor dan ingin menemukan elemen ke-n dari deret Fibonacci.
+
+Barisan Fibonacci adalah barisan matematika di mana setiap angka adalah jumlah dari dua angka sebelumnya, di mana 0 dan 1 adalah dua angka pertama. Angka ketiga berurutan adalah 1, keempat adalah 2, kelima adalah 3, dan seterusnya... (0, 1, 1, 2, 3, 5, 8, 13, ...).
+
+Ini berarti jika Anda memasukkan 6, maka elemen ke-6 dalam deret Fibonacci adalah 8:
+
+<InteractiveCode language="javascript" code={`function fibonacci(n) {
+  if (n < 2) {
+    return n
+  }
+
+  return fibonacci(n - 1) + fibonacci(n - 2)
+}
+
+const fib = fibonacci(6)
+console.log(fib)
+`} />
+Dalam kode di atas, algoritme menentukan tingkat pertumbuhan yang berlipat ganda setiap kali kumpulan data input ditambahkan. Ini berarti kompleksitas waktu adalah eksponensial dengan orde O(2^n).
+
+atau contoh lainnya
+
+```javascript
+const fibonacci = (n) => {
+  if (n < 2) {
+    return n
+  }
+
+  return fibonacci(n - 1) + fibonacci(n - 2)
+}
+
+console.log(fibonacci(6))
+```
+
+#### Faktorial (O (n!))
+
+<InteractiveCode language="javascript" code={`function printAllNumbersThenAllPairSums(numbers) {
+  console.log('these are the numbers:')
+  numbers.forEach(function (number) {
+    console.log(number)
+  })
+
+  console.log('and these are their sums:')
+  numbers.forEach(function (firstNumber) {
+    numbers.forEach(function (secondNumber) {
+      console.log(firstNumber + secondNumber)
+    })
+  })
+}
+
+printAllNumbersThenAllPairSums([1, 2, 3, 4, 5])
+`} />
+
+atau
+
+```javascript
+const printAllNumbersThenAllPairSums = (numbers) => {
+  console.log('these are the numbers:')
+  numbers.forEach((number) => {
+    console.log(number)
+  })
+
+  console.log('and these are their sums:')
+  numbers.forEach((firstNumber) => {
+    numbers.forEach((secondNumber) => {
+      console.log(firstNumber + secondNumber)
+    })
+  })
+}
+
+let score = [12, 22, 45, 67, 96]
+printAllNumbersThenAllPairSums(score)
+```
+
+### Kesimpulan
+
+Saya telah membuat penggunaan notasi Big O untuk memvisualkan beberapa algortima pengurutan, Anda dapat melihatnya disini:
+
+<InlinePost
+  href="/tools/sorting-visualizer"
+  title="Visualisasi Pengurutan"
+  description="Membantu memvisualisasikan berbagai algoritma sorting."
+/>
+
+Anda telah mengetahui apa itu kompleksitas waktu, bagaimana kinerja ditentukan menggunakan notasi Big O, dan berbagai kompleksitas waktu yang ada dengan contoh.
