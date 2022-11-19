@@ -1,7 +1,7 @@
 ---
 name: Rahmat Agung Julians
 avatar: /static/images/avatar.webp
-occupation: Software Engineer
+occupation: Developer Relations Engineer
 company: Rahmat Agung Julians
 email: rahmatagungj@gmail.com
 twitter: https://twitter.com/Rahmat_A_J

@@ -1,0 +1,182 @@
+[
+  {
+    "question": "Apa tujuan dari tag <track>, dan kapan harus digunakan?",
+    "answerOptions": [
+      {
+        "answer": "Tag <track> digunakan untuk menentukan subtitel, teks, dan jenis teks berbasis waktu lainnya. Ini biasanya diterapkan sebagai anak dari tag <audio> dan <video>",
+        "isCorrect": true
+      },
+      {
+        "answer": "Tag <track> digunakan untuk menentukan subtitle. Ini biasanya diterapkan sebagai anak dari tag <audio> dan <video>"
+      },
+      {
+        "answer": "Tag <track> digunakan untuk menentukan subtitle. Ini biasanya diterapkan sebagai anak dari tag <video>"
+      },
+      {
+        "answer": "Tag <track> digunakan untuk menentukan subtitel, teks, dan jenis teks berbasis waktu lainnya. Ini biasanya diterapkan sebagai anak dari tag <video>"
+      }
+    ]
+  },
+  {
+    "question": "Apa contoh terbaik dari elemen void?",
+    "answerOptions": [
+      {
+        "answer": "<br><base><source>",
+        "isCorrect": true
+      },
+      {
+        "answer": "<link><meta><title>"
+      },
+      {
+        "answer": "<input><br><p>"
+      },
+      {
+        "answer": "<area><embed><strong>"
+      }
+    ]
+  },
+  {
+    "question": "Di HTML5, tag atau tag mana yang menyematkan halaman web di dalam halaman web?",
+    "answerOptions": [
+      {
+        "answer": "<iframe>",
+        "isCorrect": true
+      },
+      {
+        "answer": "<iframe>, <frame>, dan <frameset>"
+      },
+      {
+        "answer": "<frame>"
+      },
+      {
+        "answer": "<frame> and <frameset>"
+      }
+    ]
+  },
+  {
+    "question": "Di mana tag <header> dan <footer> biasanya muncul?",
+    "answerOptions": [
+      {
+        "answer": "sebagai anak-anak <body>, <article>, dan <section> tag",
+        "isCorrect": true
+      },
+      {
+        "answer": "sebagai anak-anak <body>, <article>, <aside>, dan <section> tag"
+      },
+      {
+        "answer": "sebagai anak-anak <body>, <article>, <aside>, <nav>, dan <section> tag"
+      },
+      {
+        "answer": "sebagai anak-anak <body>, <article>, <table>, dan <section> tag"
+      }
+    ]
+  },
+  {
+    "question": "Apa cara terbaik untuk menerapkan gaya tebal pada teks?",
+    "answerOptions": [
+      {
+        "answer": "<strong>",
+        "isCorrect": true
+      },
+      {
+        "answer": "Gunakan CSS"
+      },
+      {
+        "answer": "<bold>"
+      },
+      {
+        "answer": "<b>"
+      }
+    ]
+  },
+  {
+    "question": "Kapan tag <link> digunakan?",
+    "answerOptions": [
+      {
+        "answer": "saat menautkan style sheet, favicon, dan aset yang dimuat sebelumnya",
+        "isCorrect": true
+      },
+      {
+        "answer": "saat menautkan lembar gaya, JavaScript, dan ikon untuk aplikasi seluler"
+      },
+      {
+        "answer": "saat menautkan satu halaman web ke halaman web lainnya"
+      },
+      {
+        "answer": "saat menautkan lembar gaya, URL eksternal, dan favicon"
+      }
+    ]
+  },
+  {
+    "question": "Dengan tag mana <source> elemen dikaitkan?",
+    "answerOptions": [
+      {
+        "answer": "<picture>, <audio>, and <video>",
+        "isCorrect": true
+      },
+      {
+        "answer": "<svg>, <picture>, <audio>, and <video>"
+      },
+      {
+        "answer": "Itu dapat dipertukarkan dengan atribut src, jadi elemen apa pun yang digunakan srcdapat menggunakan <source>"
+      },
+      {
+        "answer": "<audio> and <video>"
+      }
+    ]
+  },
+  {
+    "question": "Apa yang BUKAN atribut yang valid untuk elemen <textarea> tersebut?",
+    "answerOptions": [
+      {
+        "answer": "max",
+        "isCorrect": true
+      },
+      {
+        "answer": "readonly"
+      },
+      {
+        "answer": "spellcheck"
+      },
+      {
+        "answer": "form"
+      }
+    ]
+  },
+  {
+    "question": "Kapan Anda harus menggunakan <ol> dan <ul> elemen?",
+    "answerOptions": [
+      {
+        "answer": "Gunakan <ul> saat Anda menginginkan daftar berpoin dan <ol> saat Anda menginginkan daftar bernomor.",
+        "isCorrect": true
+      },
+      {
+        "answer": "Gunakan <ul> ketika Anda memiliki daftar item yang urutan itemnya penting. Gunakan <ol> ketika Anda memiliki daftar item yang bisa masuk dalam urutan apa pun"
+      },
+      {
+        "answer": "Gunakan <ol> saat Anda menginginkan daftar berpoin dan <ul> saat Anda menginginkan daftar bernomor"
+      },
+      {
+        "answer": "Gunakan <ol> ketika Anda memiliki daftar item yang urutan itemnya penting. Gunakan <ul> ketika Anda memiliki daftar item yang bisa masuk dalam urutan apa pun"
+      }
+    ]
+  },
+  {
+    "question": "Bagaimana Anda mengonfirmasi bahwa dokumen ditulis dalam HTML5?",
+    "answerOptions": [
+      {
+        "answer": "Gunakan deklarasi <!DOCTYPE html> yang memulai dokumen",
+        "isCorrect": true
+      },
+      {
+        "answer": "Server membungkus halaman web dalam pembungkus HTML5"
+      },
+      {
+        "answer": "Browser menerima encoding dari server untuk menampilkan dokumen dengan HTML5"
+      },
+      {
+        "answer": "Itu terlampir dalam tag <html>"
+      }
+    ]
+  }
+]

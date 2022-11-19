@@ -1,0 +1,182 @@
+[
+  {
+    "question": "Menggunakan pemilih atribut, bagaimana Anda memilih <a> elemen dengan atribut 'title'?",
+    "answerOptions": [
+      {
+        "answer": "a[title]{...}",
+        "isCorrect": true
+      },
+      {
+        "answer": "a > title {...}"
+      },
+      {
+        "answer": "a.title {...}"
+      },
+      {
+        "answer": "a=title {...}"
+      }
+    ]
+  },
+  {
+    "question": "Saat menambahkan gaya transparansi, apa perbedaan antara menggunakan properti opacity versus properti latar belakang dengan rgba() nilai?",
+    "answerOptions": [
+      {
+        "answer": "Opacity menentukan tingkat transparansi suatu elemen, termasuk isinya. Latar belakang dengan rgba() nilai menerapkan transparansi hanya untuk warna latar belakang",
+        "isCorrect": true
+      },
+      {
+        "answer": "Opacity menentukan tingkat transparansi elemen anak. Latar belakang dengan rgba() nilai menerapkan transparansi hanya untuk warna latar belakang"
+      },
+      {
+        "answer": "Opacity menerapkan transparansi hanya untuk warna latar belakang. Latar belakang dengan rgba() nilai menentukan tingkat transparansi suatu elemen, secara keseluruhan, termasuk isinya"
+      },
+      {
+        "answer": "Opacity menerapkan transparansi ke elemen induk dan anak. Latar belakang dengan rgba() nilai menentukan tingkat transparansi elemen induk saja"
+      }
+    ]
+  },
+  {
+    "question": "Untuk apa properti line-height terutama digunakan?",
+    "answerOptions": [
+      {
+        "answer": "untuk mengontrol ketinggian ruang antara dua baris konten",
+        "isCorrect": true
+      },
+      {
+        "answer": "untuk mengontrol ketinggian ruang antara elemen heading"
+      },
+      {
+        "answer": "untuk mengontrol ketinggian ukuran karakter"
+      },
+      {
+        "answer": "untuk mengontrol lebar ruang antar karakter"
+      }
+    ]
+  },
+  {
+    "question": "Tiga dari pilihan ini benar tentang pemilih kelas. Mana yang TIDAK benar?",
+    "answerOptions": [
+      {
+        "answer": "Kelas dapat digunakan beberapa kali per halaman tetapi tidak dalam elemen yang sama",
+        "isCorrect": true
+      },
+      {
+        "answer": "Beberapa kelas dapat digunakan dalam elemen yang sama"
+      },
+      {
+        "answer": "Kelas yang sama dapat digunakan beberapa kali per halaman"
+      },
+      {
+        "answer": "Pemilih kelas dimulai dengan periode terkemuka"
+      }
+    ]
+  },
+  {
+    "question": "Apa yang tidak benar tentang pemilih kelas?",
+    "answerOptions": [
+      {
+        "answer": "Hanya satu nilai kelas yang dapat diberikan ke elemen",
+        "isCorrect": true
+      },
+      {
+        "answer": "Sebuah elemen dapat memiliki beberapa nilai kelas"
+      },
+      {
+        "answer": "Pemilih kelas ditandai dengan titik awal"
+      },
+      {
+        "answer": "Lebih dari satu elemen dapat memiliki nilai kelas yang sama"
+      }
+    ]
+  },
+  {
+    "question": "Untuk mengubah warna SVG menggunakan CSS, properti mana yang digunakan?",
+    "answerOptions": [
+      {
+        "answer": "Gunakan fill untuk mengatur warna di dalam objek dan stroke untuk mengatur warna perbatasan",
+        "isCorrect": true
+      },
+      {
+        "answer": "Gunakan fill atau background untuk mengatur warna di dalam objek dan stroke untuk mengatur warna perbatasan"
+      },
+      {
+        "answer": "Warna tidak dapat diubah dengan CSS"
+      },
+      {
+        "answer": "Gunakan isian latar belakang untuk mengatur warna di dalam objek dan goresan atau batas untuk mengatur warna batas"
+      }
+    ]
+  },
+  {
+    "question": "Saat menggunakan position: fixed, elemen akan selalu diposisikan relatif terhadap apa?",
+    "answerOptions": [
+      {
+        "answer": "area viewport",
+        "isCorrect": true
+      },
+      {
+        "answer": "elemen terdekat dengan posisi: relatif"
+      },
+      {
+        "answer": "elemen induk"
+      },
+      {
+        "answer": "elemen pembungkus"
+      }
+    ]
+  },
+  {
+    "question": "Secara default, gambar latar belakang akan mengulang _",
+    "answerOptions": [
+      {
+        "answer": "tanpa batas, vertikal, dan horizontal",
+        "isCorrect": true
+      },
+      {
+        "answer": "hanya jika properti background-repeat diatur untuk mengulang"
+      },
+      {
+        "answer": "tanpa batas pada sumbu horizontal saja"
+      },
+      {
+        "answer": "sekali, pada sumbu x dan y"
+      }
+    ]
+  },
+  {
+    "question": "Bagaimana Anda membuat huruf pertama dari setiap paragraf di halaman menjadi merah?",
+    "answerOptions": [
+      {
+        "answer": "p::first-letter { color: red; }",
+        "isCorrect": true
+      },
+      {
+        "answer": "p:first-letter { color: red; }"
+      },
+      {
+        "answer": "first-letter::p { color: red; }"
+      },
+      {
+        "answer": "first-letter:p { color: red; }"
+      }
+    ]
+  },
+  {
+    "question": "Pilihan mana yang akan memberikan elemen blok sudut membulat?",
+    "answerOptions": [
+      {
+        "answer": "border-radius: 10px;",
+        "isCorrect": true
+      },
+      {
+        "answer": "corner-radius: 10px;"
+      },
+      {
+        "answer": "border-corner: 10px;"
+      },
+      {
+        "answer": "corner-curve: 10px;"
+      }
+    ]
+  }
+]
