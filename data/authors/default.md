@@ -10,15 +10,6 @@ github: https://github.com/rahmatagungj
 instagram: https://instagram.com/rahmatagungj
 ---
 
-Selamat datang di catatan digital saya. Saya bersemangat membuat kontribusi ke sumber terbuka, memberikan pengetahuan teknologi untuk semua orang, dan membangun komunitas.
-
-### Statistik
-
-![Rahmat's GitHub stats](https://github-readme-stats.vercel.app/api?username=rahmatagungj&show_icons=true&theme=default)
-![Rahmat's Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=anuraghazra&exclude_repo=Slims9-Kuningan&layout=compact&theme=default)
-
-### Alat dan Bahasa Pemrograman
-
 <div className="flex flex-row flex-wrap">
 <img src="https://img.shields.io/badge/Lua-2C2D72?style=for-the-badge&logo=lua&logoColor=white" alt="lua"  className="language-badge h-6" loading="lazy"/>
 <img src="https://img.shields.io/badge/Ruby-CC342D?style=for-the-badge&logo=ruby&logoColor=white" alt="ruby"  className="language-badge h-6" loading="lazy"/>
